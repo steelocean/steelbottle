@@ -64,15 +64,14 @@ class MysqlTodoListCollection implements TodoListCollection
   public function save() {
     $pdo = $this->_db;
 
-    $sql = "INSERT INTO todolist (`id`,`name`,`description`,`completed`) VALUES (?,?,?,?)";
+    $sql = "INSERT INTO todolist (`id`,`name`,`description`) VALUES (?,?,?)";
     $stmt = $pdo->prepare($sql);
 
     
     foreach ($this->_data as $list) {
-      $completed = !empty($list->completed) ? 1 : 0;
       $description = empty($list->description) ? "" : $list->description;
 
-      $stmt->execute([$list->id, $list->name, $description, $completed]);
+      $stmt->execute([$list->id, $list->name, $description]);
       $list->saveTasks($pdo, $list->id);
     }
   }
