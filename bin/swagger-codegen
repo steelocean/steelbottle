@@ -1,0 +1,30 @@
+#!/bin/bash
+
+SELF="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJ_DIR="$(dirname $SELF)"
+
+
+JAR="$PROJ_DIR/bin/swagger-codegen-cli.jar"
+
+# ref: https://github.com/swagger-api/swagger-codegen/wiki/server-stub-generator-howto
+# php-silex, lumen, slim
+
+FORMAT=$1
+IN=$2
+OUT=$3
+
+function usage {
+	echo "Usage: $0 format in.swagger out.dir"
+	exit 1
+}
+if [ "x" == "x$IN" ]; then
+    usage
+fi
+if [ "x" == "x$OUT" ]; then
+    usage
+fi
+
+java -jar $JAR generate \
+  -i $IN \
+  -l $FORMAT \
+  -o $OUT

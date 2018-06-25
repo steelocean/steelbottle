@@ -1,0 +1,21 @@
+{
+    "require": {
+	"slim/slim": "3.*",
+	"ramsey/uuid": "^3.7",
+        "robmorgan/phinx": "^0.10.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "SteelBottle\\Models\\": "src/lib/Models"
+        }
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.4",
+        "flow/jsonpath": "^0.4.0"
+    },
+    "config": {
+        "bin-dir": "bin",
+	"cache-dir": ".composer-cache.d"	
+    },
+    "minimum-stability": "RC"
+}
