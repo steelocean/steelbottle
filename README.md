@@ -11,15 +11,14 @@ Quickstart
   git clone https://github.com/steelocean/steelbottle.git
   cd steelbottle
   
-  bash -x bootstrap.sh
-  
-  # OR run the commands manually
-  
   docker-compose up -d --build
   docker-compose run --rm composer install
   docker-compose run --rm --entrypoint php  -w /var/www/html/app php bin/phinx migrate
+```
 
-  # Run Tests
+* Run Tests
+
+```
   cd web/app
   ./bin/codecept run
 ```
